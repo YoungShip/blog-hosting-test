@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="用于比较免费博客托管平台的轻量访问测试页。">
+  <title>主页与笔记 · 访问测试</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317243b'/%3E%3Cpath d='M9 8h14v16H9zM12 13h8M12 18h6' fill='none' stroke='%237de2ce' stroke-width='2'/%3E%3C/svg%3E">
+  <style>
+    :root{color-scheme:light;--ink:#17243b;--muted:#506076;--line:#d9e1eb;--accent:#00695c}
+    *{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.75}
+    main{max-width:920px;padding:48px 24px 64px;margin:auto}header{border-top:5px solid var(--ink);padding-top:24px;margin-bottom:32px}.eyebrow{font-size:.875rem;letter-spacing:.08em;color:var(--accent);font-weight:700}h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.25;margin:12px 0 16px}h2{font-size:1.15rem;margin:0 0 12px}p{margin:8px 0 16px}.muted{color:var(--muted)}.host{overflow-wrap:anywhere;font-family:ui-monospace,Consolas,monospace;font-size:.95rem}
+    .panel{background:white;border:1px solid var(--line);border-radius:12px;padding:24px;margin:20px 0}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0}.metric{padding:20px;background:var(--ink);color:white;border-radius:10px}.metric span{display:block;font-size:.875rem;color:#c9d8e9}.metric strong{display:block;font-size:1.8rem;line-height:1.6;font-variant-numeric:tabular-nums}.metric small{font-size:.875rem;color:#c9d8e9}
+    a.button{display:inline-block;background:var(--accent);color:white;border-radius:8px;padding:10px 20px;text-decoration:none;font-weight:600}a.button:focus-visible{outline:3px solid #bd4600;outline-offset:4px}ol{padding-left:24px}li{padding:4px 0}footer{font-size:.875rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:28px}code{font-family:ui-monospace,Consolas,monospace;background:#edf2f7;padding:2px 5px;border-radius:3px}
+    @media(max-width:600px){main{padding:28px 18px 40px}.metrics{grid-template-columns:1fr}.metric{display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 12px}.metric small{grid-column:1 / -1}.panel{padding:20px}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">免费托管 · 同页对照</div>
+    <h1>主页与笔记<br>先从顺畅打开开始。</h1>
+    <p>你已成功打开测试页。两家平台使用同一份页面，不加载外部字体、图片或统计脚本。</p>
+    <p class="muted">当前站点：<span class="host" id="host">正在读取</span></p>
+  </header>
+  <section aria-labelledby="timing-title">
+    <h2 id="timing-title">这一次打开，用了多久？</h2>
+    <div class="metrics" aria-live="polite">
+      <div class="metric"><span>收到首字节</span><strong id="ttfb">—</strong><small>从开始导航到收到响应</small></div>
+      <div class="metric"><span>首次内容绘制</span><strong id="fcp">—</strong><small>浏览器开始显示页面内容</small></div>
+      <div class="metric"><span>页面加载完成</span><strong id="loaded">—</strong><small>本页 load 事件结束时间</small></div>
+    </div>
+    <a class="button" href="./" id="retry">重新测试这页</a>
+    <p class="muted" id="cache-note">计时只在当前设备显示，不会上传。页面不能检测你是否开启代理。</p>
+    <noscript><p>JavaScript 未开启：正文可以访问，但无法显示加载计时。</p></noscript>
+  </section>
+  <section class="panel" aria-labelledby="method-title">
+    <h2 id="method-title">怎样比较才有参考价值</h2>
+    <ol>
+      <li>用不经过代理的网络，交替打开 GitHub Pages 和 Cloudflare Pages 的测试链接。</li>
+      <li>每家测 3 次，记录成功次数和时间；失败也要记录，不能只比较成功的那次。</li>
+      <li>再用手机流量重复一次，注明运营商。不要把不同网络的结果混在一起。</li>
+    </ol>
+    <p class="muted">这里只测试轻量正文的可达性与加载表现，不是带宽测速，也不能代表全国或长期表现。重测会添加新查询参数，但 DNS、连接和平台缓存仍可能复用。</p>
+  </section>
+  <section class="panel" aria-labelledby="note-title">
+    <h2 id="note-title">笔记阅读样例：先记录，再下结论</h2>
+    <p>一篇有用的踩坑笔记，可以依次写下问题现象、运行环境、复现方法、排查过程和最终验证。保留失败尝试，往往比只写最后一条命令更有帮助。</p>
+    <p>网站也一样：<code>能打开</code> 是起点，持续访问是否稳定，才决定它适不适合作为个人主页。测试结束后，再制作正式的介绍、项目展示和文章归档。</p>
+  </section>
+  <footer>测试版本：hosting-test-v1 · 无账号系统、无表单、无访问数据上传。托管平台仍可能记录常规访问日志。</footer>
+</main>
+<script>
+  document.getElementById('host').textContent = location.host || '本地文件';
+  document.getElementById('retry').href = location.pathname + '?test=' + Date.now();
+  const format = value => value > 0 ? Math.round(value) + ' ms' : '未提供';
+  function showTimings() {
+    const nav = performance.getEntriesByType('navigation')[0];
+    if (nav) {
+      document.getElementById('ttfb').textContent = format(nav.responseStart - nav.startTime);
+      document.getElementById('loaded').textContent = format(nav.loadEventEnd - nav.startTime);
+    }
+    const paint = performance.getEntriesByName('first-contentful-paint')[0];
+    if (paint) document.getElementById('fcp').textContent = format(paint.startTime);
+  }
+  if ('PerformanceObserver' in window) {
+    try { new PerformanceObserver(showTimings).observe({type:'paint',buffered:true}); } catch {}
+  }
+  window.addEventListener('load', () => setTimeout(showTimings, 0));
+</script>
+</body>
+</html>
